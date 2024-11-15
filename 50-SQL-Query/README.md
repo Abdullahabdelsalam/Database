@@ -1,4 +1,4 @@
-@@ -1,451 +1,451 @@
+
 # 50 SQL questions
 * ### [`Start`](#start-by-running-the-readymade-sql-scripts-to-create-the-test-data-these-scripts-include-a-sample-worker-table-a-bonus-and-a-title-table-with-pre-filled-data)
 * ### [`Easy`](#easy-1)
