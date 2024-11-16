@@ -297,13 +297,13 @@ SELECT * FROM task.Worker EXCEPT SELECT * FROM task.WorkerClone;
 
 #### 31.  Write an SQL query to show the current date and time.
 ``` sql 
-
+SELECT CURRENT_TIMESTAMP;
 ```
 <br/><br/>
 
 #### 32. Write an SQL query to show the top n (say 10) records of a table.
 ``` sql
-
+ SELECT *FROM task.worker ORDER BY WORKER_ID asc  LIMIT 10;
 ```
 <br/><br/>
 
@@ -312,19 +312,30 @@ SELECT * FROM task.Worker EXCEPT SELECT * FROM task.WorkerClone;
 
 #### 33. Write an SQL query to determine the nth (say n=5) highest salary from a table.
 ``` sql
-
+SELECT DISTINCT SALARY
+FROM task.worker
+ORDER BY SALARY DESC
+LIMIT 1 OFFSET 4;
 ```
 <br/><br/>
 
 #### 34.  Write an SQL query to determine the 5th highest salary without using the TOP or limit method.
 ``` sql 
-
+SELECT Salary
+FROM task.worker W1
+WHERE n-1 = (
+ SELECT COUNT( DISTINCT ( W2.Salary ) )
+ FROM task.worker W2
+ WHERE W2.Salary >= W1.Salary
+ );
 ```
 <br/><br/>
 
 #### 35. Write an SQL query to fetch the list of employees with the same salary.
 ``` sql
-
+SELECT distinct W.WORKER_ID, W.FIRST_NAME, W.Salary
+from task.worker W, task.worker W1
+where W.Salary = W1.Salary and W.WORKER_ID != W1.WORKER_ID;
 ```
 <br/><br/>
 
