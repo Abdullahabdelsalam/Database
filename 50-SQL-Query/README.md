@@ -341,15 +341,16 @@ where W.Salary = W1.Salary and W.WORKER_ID != W1.WORKER_ID;
 
 #### 36. Write an SQL query to show the second-highest salary from a table.
 ``` sql
-
+SELECT max(Salary) from task.Worker where Salary not in (Select max(Salary) from task.Worker);
 ```
 Another sol:
 ``` sql
-
+SELECT DISTINCT SALARY FROM task.worker ORDER BY SALARY DESC LIMIT 1 OFFSET 1;
 ```
 Another sol:
 ``` sql
-
+SELECT DISTINCT w1.SALARY FROM task.worker as w1 WHERE 2= (SELECT COUNT(DISTINCT w2.SALARY) FROM task.worker as w2 
+WHERE w2.SALARY >= w1.SALARY)
 ```
 
 <br/><br/>
@@ -362,19 +363,19 @@ Another sol:
 
 #### 38. Write an SQL query to fetch intersecting records of two tables.
 ``` sql
-
+SELECT * FROM task.worker INNER JOIN task.workerclone On worker.WORKER_ID=workerclone.WORKER_ID;
 ```
 <br/><br/>
 
 #### 39. Write an SQL query to fetch the first 50% of records from a table.
 ``` sql
-
+SELECT * FROM task.worker WHERE WORKER_ID <= (SELECT COUNT(WORKER_ID)/2 FROM task.worker);
 ```
 <br/><br/>
 
 #### 40. Write an SQL query to fetch the departments that have less than five people in them.
 ``` sql
-
+SELECT DEPARTMENT , COUNT(DEPARTMENT) FROM task.worker GROUP BY DEPARTMENT HAVING COUNT(DEPARTMENT)< 5;
 ```
 <br/><br/>
 
