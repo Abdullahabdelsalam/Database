@@ -357,7 +357,7 @@ WHERE w2.SALARY >= w1.SALARY)
 
 #### 37. Write an SQL query to show one row twice in the results from a table.
 ``` sql
-
+SELECT * FROM task.worker UNION ALL SELECT * FROM task.worker;
 ```
 <br/><br/>
 
