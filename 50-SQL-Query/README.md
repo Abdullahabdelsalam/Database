@@ -381,45 +381,36 @@ SELECT DEPARTMENT , COUNT(DEPARTMENT) FROM task.worker GROUP BY DEPARTMENT HAVIN
 
 #### 41. Write an SQL query to show all departments along with the number of people in there.
 ``` sql
-
+SELECT DEPARTMENT, COUNT(DEPARTMENT) as 'Number of Workers' FROM task.Worker GROUP BY DEPARTMENT;
  ```
  <br/><br/>
 
  #### 42. Write an SQL query to show the last record from a table.
  ``` sql
-
- ```
- Another sol;
- ``` sql
-
+Select * from task.Worker where WORKER_ID = (SELECT max(WORKER_ID) from task.Worker);
  ```
 
  <br/><br/>
 
  #### 43. Write an SQL query to fetch the first row of a table.
  ``` sql
- 
- ```
- Another sol;
- ``` sql
- 
+ Select * from task.Worker where WORKER_ID = (SELECT min(WORKER_ID) from task.Worker);
  ```
  <br/><br/>
 
  #### 44.  Write an SQL query to fetch the last five records from a table.
  ``` sql 
-
+SELECT * FROM task.Worker ORDER BY WORKER_ID DESC LIMIT 5;
  ```
 <br/><br/>
 
 #### 45. Write an SQL query to print the names of employees having the highest salary in each department.
 ``` sql
-
+SELECT t.DEPARTMENT, t.FIRST_NAME, t.Salary from
+(SELECT max(Salary) as TotalSalary, DEPARTMENT from task.Worker group by DEPARTMENT) as TempNew 
+Inner Join task.Worker t on TempNew.DEPARTMENT = t.DEPARTMENT and TempNew.TotalSalary = t.Salary;
 ```
-Another sol:
-``` sql
 
-```
 <br/><br/>
 
 #### 46. Write an SQL query to fetch three max salaries from a table.
