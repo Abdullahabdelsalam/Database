@@ -415,34 +415,34 @@ Inner Join task.Worker t on TempNew.DEPARTMENT = t.DEPARTMENT and TempNew.TotalS
 
 #### 46. Write an SQL query to fetch three max salaries from a table.
 ``` sql
-
-```
-Another sol:
-``` sql
-
+SELECT distinct Salary from task.Worker a WHERE 3 >= (SELECT count(distinct Salary) 
+from task.Worker b WHERE a.Salary <= b.Salary) order by a.Salary desc;
 ```
 <br/><br/>
 
 #### 47. Write an SQL query to fetch three min salaries from a table.
 ``` sql
-
+SELECT distinct Salary from task.Worker a WHERE 3 >= (SELECT count(distinct Salary) 
+from task.Worker b WHERE a.Salary >= b.Salary) order by a.Salary desc;
 ```
 <br/><br/>
 
 #### 48. Write an SQL query to fetch nth max salaries from a table.
 ``` sql
-
+WITH vars AS (SELECT 5 AS n)
+SELECT DISTINCT Salary FROM task.Worker a WHERE (SELECT n FROM vars) >= (SELECT COUNT(DISTINCT Salary)
+FROM task.Worker b WHERE a.Salary <= b.Salary) ORDER BY a.Salary DESC;
 ```
 <br/><br/>
 
 #### 49.Write an SQL query to fetch departments along with the total salaries paid for each of them.
 ``` sql
-
+SELECT DEPARTMENT, sum(Salary) from task.Worker group by DEPARTMENT;
 ```
 <br/><br/>
 
 #### 50.Write an SQL query to fetch the names of workers who earn the highest salary.
 ``` sql
-
+SELECT FIRST_NAME, SALARY from task.Worker WHERE SALARY=(SELECT max(SALARY) from task.Worker);
 ```
 <br/><br/><br/>
