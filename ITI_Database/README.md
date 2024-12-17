@@ -2,8 +2,8 @@
 
 <br/>
 
-* ## [` Day_1`](/day_1)
+  * ## [` Day_1`](/day_1)
   
-> #### - DB Life cycle 
+       > #### - DB Life cycle 
 
 
