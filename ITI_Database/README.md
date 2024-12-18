@@ -8,7 +8,7 @@
        > #### - File Based System
        > #### - DB Design
        > #### - ERD
-    * ## [` Day_2`](/day_2)
+ * ## [` Day_2`](/day_2)
 
 
 
